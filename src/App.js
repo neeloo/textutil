@@ -1,36 +1,47 @@
-// import logo from './logo.svg';
+ import logo from './logo.svg';
 import './App.css';
 import Alert from './Component/Alert';
 import Navbar from './Component/Navbar';
 import TextForm from './Component/TextForm';
-// import About from './Component/About';
+ import About from './Component/About';
 import { useState } from 'react';
 
+//addd router 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+
+
+
 function App() {
-  const[mode,setmode]=useState('light');
+  const [mode, setmode] = useState('light');
 
-const[alert,setalert]=useState(null);
+  const [alert, setalert] = useState(null);
 
-const showAtert=(message,type)=>{
-     setalert({
-      msg:message,
-      type:type
-     })
-     setTimeout(() => {
+  const showAtert = (message, type) => {
+    setalert({
+      msg: message,
+      type: type
+    })
+    setTimeout(() => {
       setalert(null);
-     }, 1500);
-}
-  
+    }, 1500);
+  }
 
-  const togglemode =()=>{
-    if(mode ==='light'){
-      setmode ('dark');
-      document.body.style.backgroundColor='grey';
+
+  const togglemode = () => {
+    if (mode === 'light') {
+      setmode('dark');
+      document.body.style.backgroundColor = 'grey';
       showAtert(" enable dark mode", "success");
     }
-    else{
+    else {
       setmode('light');
-      document.body.style.backgroundColor='white';
+      document.body.style.backgroundColor = 'white';
       showAtert("enable light mode", "success");
     }
 
@@ -54,30 +65,41 @@ const showAtert=(message,type)=>{
     // </div>
 
 
-//   start coding hear?*************************
+    //   start coding hear?*************************
     <>
-  
-{/*  1==adding Navbar.js ******************* */}
 
-{/* <Navbar  title='TextUtil'/> */}
+      {/*  1==adding Navbar.js ******************* */}
 
- {/*  2===change the name of titleand about   using prorpstype **************/}
+      {/* <Navbar  title='TextUtil'/> */}
 
- <Navbar  title='TextUtil'  About=' About us'  mode={mode} togglemode={togglemode}/>  
+      {/*  2===change the name of titleand about   using prorpstype **************/}
+      <Router>
 
- {/* //adding ater.js***************** */}
- <Alert   alert={alert}/>   
+      <Navbar title='TextUtil' About=' About us' mode={mode} togglemode={togglemode} />
 
-{/*  3==for default proprs ************/} 
-  {/* <Navbar/>     */}
+      {/* //adding ater.js***************** */}
+      <Alert alert={alert} />
 
-  {/* adding textForm.js ***************************/}
-  <div className="container  my-3" >
-  <TextForm  showAtert ={showAtert} heading=" Enter the text to analyze" mode={mode}/>
-  {/* //adding about js****************** */}
-  {/* <About/> */}
-  </div>
-  
+      {/*  3==for default proprs ************/}
+      {/* <Navbar/>     */}
+
+      {/* adding textForm.js ***************************/}
+      <div className="container  my-3" >
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/">
+            <TextForm showAtert={showAtert} heading=" Enter the text to analyze" mode={mode} />
+          </Route>
+        </Switch>
+        
+        {/* //adding about js****************** */}
+        {/* <About/> */}
+      </div>
+      </Router>
+
+
 
 
     </>
