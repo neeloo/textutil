@@ -1,17 +1,15 @@
- import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import Alert from './Component/Alert';
 import Navbar from './Component/Navbar';
 import TextForm from './Component/TextForm';
- import About from './Component/About';
+import About from './Component/About';
 import { useState } from 'react';
 
-//addd router 
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 
@@ -73,30 +71,23 @@ function App() {
       {/* <Navbar  title='TextUtil'/> */}
 
       {/*  2===change the name of titleand about   using prorpstype **************/}
-      <Router>
-
-      <Navbar title='TextUtil' About=' About us' mode={mode} togglemode={togglemode} />
-
-      {/* //adding ater.js***************** */}
-      <Alert alert={alert} />
 
       {/*  3==for default proprs ************/}
       {/* <Navbar/>     */}
 
-      {/* adding textForm.js ***************************/}
-      <div className="container  my-3" >
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/">
-            <TextForm showAtert={showAtert} heading=" Enter the text to analyze" mode={mode} />
-          </Route>
-        </Switch>
-        
-        {/* //adding about js****************** */}
-        {/* <About/> */}
-      </div>
+      <Router>
+        <Navbar title='TextUtil' About=' About' mode={mode} togglemode={togglemode} />
+        <Alert alert={alert} />
+        <div className="container  my-3" >
+          <Switch>
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route exact path="/">
+              <TextForm showAtert={showAtert} heading=" Enter the text to analyze" mode={mode} />
+            </Route>
+          </Switch>
+        </div>
       </Router>
 
 
@@ -107,3 +98,4 @@ function App() {
 }
 
 export default App;
+
