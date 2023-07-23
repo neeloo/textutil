@@ -100,12 +100,12 @@ export default function TextForm(props) {
                         color: props.mode === 'dark' ? 'white' : 'black' }} id="myBox" rows="8" ></textarea>
                 </div>
                 <button className="btn btn-dark " onClick={handleUpClick}> Convert to UpperCase</button>
-                <button className="btn btn-dark mx-2" onClick={handleLpClick}> Convert to LowerCase</button>
-                <button className="btn btn-dark mx-2" onClick={handleclearClick}> Clear text</button>
-                <button className="btn btn-dark mx-2" onClick={handleReplaceClick}> Replace world</button>
-                <button className="btn btn-dark mx-2" onClick={handleReverse}> Reverse the text</button>
-                <button className="btn btn-dark mx-2" onClick={WhiteSpace}> remove whitespace</button>
-                <button className="btn btn-dark mx-2" onClick={base64Encod}>Encode base</button>
+                <button className="btn btn-dark mx-2 my-2 " onClick={handleLpClick}> Convert to LowerCase</button>
+                <button className="btn btn-dark mx-2 my-2" onClick={handleclearClick}> Clear text</button>
+                <button className="btn btn-dark mx-2 my-2" onClick={handleReplaceClick}> Replace world</button>
+                <button className="btn btn-dark mx-2 my-2" onClick={handleReverse}> Reverse the text</button>
+                <button className="btn btn-dark mx-2 my-2" onClick={WhiteSpace}> remove whitespace</button>
+                <button className="btn btn-dark mx-2 my-2" onClick={base64Encod}>Encode base</button>
                 {/* <button className="btn btn-dark mx-2" onClick={base64Decode}>Decode base</button> */}
                 {/* <button className="btn btn-dark mx-2" onClick={downloadTxtFile}>Dowanload txt</button> */}
                 <button className="btn btn-dark mx-2" onClick={handlecopy}>copy text</button>
@@ -114,7 +114,7 @@ export default function TextForm(props) {
             </div>
             <div className="container my-2" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
                 <h2>your text summery</h2>
-                <p>{text.split(" ").length} words ans {text.length} charcter</p>
+                <p>{text.split(" ").filter((element)=>{return element.length !==0}).length} words ans {text.length} charcter</p>
                 <p>{0.008 * text.split(" ").length} minute read</p>
                 <h2>Preview</h2>
                 <p>{text.length>0 ?text:"Enter somthing preview hear"}</p>
